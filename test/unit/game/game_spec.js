@@ -5,22 +5,30 @@ describe('Game module', function() {
     // Inject the Game module into this test
     beforeEach(module('Game'));
 
-    var gameManager; // instance of the GameManager
-    beforeEach(inject(function(GameManager) {
-      gameManager = GameManager;
-    });
-  
-    var _gridService;
+    var gameManager, provide, _gridService; // instance of the GameManager
+
     beforeEach(module(function($provide) {
       _gridService = {
+        buildEmptyGameBoard: angular.noop,
+        buildStartingPosition: angular.noop,
         anyCellsAvailable: angular.noop,
-        tileMatchesAvailable: angular.noop
+        tileMatchesAvailable: angular.noop,
+        getSize: function() { return 4; }
       };
 
       // Switch out the real GridService for our
       // fake version
       $provide.value('GridService', _gridService);
+      provide = $provide;
     }));
+
+    beforeEach(inject(function(GameManager) {
+      gameManager = GameManager;
+    }));
+
+    it('should have a GameManager', function() {
+      expect(gameManager).toBeDefined();
+    });
 
     describe('.movesAvailable', function() {
       it('should report true if there are cells available', function() {

@@ -13,3 +13,5 @@ angular
 .controller('GameController', function(GameManager) {
   this.game = GameManager;
 });
+
+console.log("hi");

@@ -31,13 +31,12 @@ angular.module('Keyboard', [])
     });
   };
 
-    // Bind event handlers to get called
-  // when an event is fired
+  // Bind event handlers to get called when an event gets fired
   this.on = function(cb) {
     this.keyEventHandlers.push(cb);
-    console.log('on');
   };
 
+  // Call every event handler per registered key handler. Iterate over the array of key handlers and call each one with both the key as well as the raw event
   this._handleKeyEvent = function(key, evt) {
     var callbacks = this.keyEventHandlers;
     if (!callbacks) {

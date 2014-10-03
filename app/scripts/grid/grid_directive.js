@@ -1,3 +1,7 @@
+/**
+ * Set up the grid view.
+ */
+
 'use strict';
 
 angular.module('Grid')

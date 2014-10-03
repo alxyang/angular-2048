@@ -1,3 +1,7 @@
+/**
+ * Create each tiles visual display.
+ */
+
 'use strict';
 
 angular.module('Grid')

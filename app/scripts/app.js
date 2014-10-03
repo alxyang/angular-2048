@@ -15,7 +15,6 @@ angular
 
   // Create a new game
   this.newGame = function() {
-
     KeyboardService.init();
     this.game.newGame();
     this.startGame();
